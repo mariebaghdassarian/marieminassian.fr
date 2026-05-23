@@ -316,6 +316,24 @@ nav a.active {
   border-color: var(--noir);
 }
 
+/* ---- PAGE CITATIONS ---- */
+
+.citation {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--bordure);
+}
+
+.citation:last-of-type {
+  border-bottom: none;
+}
+
+.citation p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--noir);
+  font-style: italic;
+}
+
 /* ---- FOOTER ---- */
 
 footer {
