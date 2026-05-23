@@ -20,15 +20,22 @@ ou ses réseaux — tu les connais déjà.
 
 ## Profil autrice
 
-**Nom** : Marie Minassian (nom de plume — vrai nom : Baghdassarian)  
-**Âge** : 31 ans  
-**Métier principal** : Ingénieure  
-**Origine** : Franco-arménienne (moitié arménienne, jamais allée en Arménie — sujet important pour elle)  
-**Blog littéraire** : https://memosemoi.wordpress.com (en cours de réorganisation, futur site : marieminassian.fr)  
-**Instagram** : @marie.minassian (compte principal, anciennement @marieminassiaan)  
-**Instagram littéraire** : @memosemoi (à fusionner progressivement avec le principal)  
-**TikTok** : @marie_minassian  
-**Identité** : publie et se présente sous "Marie Minassian" dans le monde littéraire. Sur LinkedIn, elle apparaît sous Baghdassarian (vie pro d'ingénieure) — les deux identités coexistent délibérément.
+**Nom** : Marie Minassian (nom de plume — vrai nom : Baghdassarian)
+**Âge** : 31 ans (née en 1994)
+**Métier principal** : Ingénieure
+**Nationalité** : Française, d'origine arménienne — mais elle ne mentionne pas ses origines dans
+sa biographie publique. Ne pas l'écrire dans les textes du site ou les bios.
+**Blog littéraire** : https://memosemoi.wordpress.com (ancien, remplacé par marieminassian.fr)
+**Site** : marieminassian.fr (site statique HTML/CSS sur GitHub Pages)
+**Instagram** : @marie.minassian (compte principal, anciennement @marieminassiaan)
+**Instagram littéraire** : @memosemoi (à fusionner progressivement avec le principal)
+**TikTok** : @marie_minassian
+**Identité** : publie et se présente sous "Marie Minassian" dans le monde littéraire. Sur LinkedIn,
+elle apparaît sous Baghdassarian (vie pro d'ingénieure) — les deux identités coexistent délibérément.
+
+**Description par sa mère** (utilisable pour la com) : "née sous le signe des gémeaux, souvent
+la somme de deux contraires : artiste et scientifique, indécise et déterminée, campagne et ville,
+hippie et tradition, orientale et occidentale, fragile et forte." (sa mère ne croit pas à l'astrologie)
 
 ---
 
@@ -58,23 +65,30 @@ Ne jamais suggérer `git config --global` — cela écraserait sa config pro et 
 **Autres outils :**
 - WordPress.com est bloqué sur le réseau de l'entreprise — ne pas essayer d'y accéder via Claude in Chrome depuis cet ordinateur.
 - VS Code est installé et fonctionnel pour le développement.
+- Claude a accès au dossier projet : C:\Users\MarieBaghdassarian\projets\marieminassian
+  (peut lire et écrire les fichiers directement sans que Marie ait à copier quoi que ce soit)
 
 ---
 
 ## Premier roman — *Presque Normale*
 
-**Parution** : septembre 2026  
-**Maison d'édition** : Assyelle (petite maison, édition participative)  
-**Genre** : Autofiction  
-**Résumé** : On suit une jeune femme de 20 à 25 ans dans une école d'ingénieurs. Elle se sent en décalage
-avec l'image qu'elle a d'une personne "normale" — extravertie, sociable, souriante. Pour dépasser sa
-timidité, elle boit beaucoup, prend des drogues, consulte une psychologue puis un psychiatre, cherche
-un diagnostic (HPI ? autisme ?). La conclusion : elle n'a rien d'anormal, elle est juste introvertie.
-C'est une quête de soi mêlée à la jeunesse et à des comportements extrêmes.  
+**Parution** : septembre 2026
+**Maison d'édition** : Assyelle (petite maison, édition participative)
+**Genre** : Autofiction contemporaine
+**Synopsis (sans spoiler)** :
+Lucie, étudiante en école d'ingénieurs, essaie de faire comme tout le monde : sortir, boire, aimer,
+s'intégrer. Mais au fond d'elle, un mal-être persiste. Elle se sent en permanence en décalage,
+soupçonne un problème, veut comprendre. Au fil des soirées, des relations bancales, des substances
+et des séances de psy, entre errance et lucidité, elle construit peu à peu une vie qui lui ressemble.
+
+**⚠️ Ne jamais révéler la fin dans les textes publics** — la quête et la résolution sont le cœur
+du roman. Le synopsis ci-dessus est la version correcte pour le site et la com.
+
 **Particularité éditoriale** : Le roman contient des fiches explicatives sur toutes les substances
-(alcool, médicaments, drogues) — noms, effets positifs et négatifs. C'est le côté analytique et
-pédagogique de Marie qui se manifeste dans la fiction.  
-**Thèmes principaux** : introversion, quête d'identité, psychiatrie, substances, jeunesse, normalité  
+(alcool, médicaments, drogues) — noms, effets positifs et négatifs.
+**Thèmes principaux** : introversion, quête d'identité, psychiatrie, substances, jeunesse, normalité
+**Contexte d'écriture** : envie de transformer des notes éparses en roman pendant le confinement.
+A suivi 3 stages à l'École Les Mots + Objectif Manuscrit 2024 avec Charlotte Milandri.
 
 ---
 
@@ -87,93 +101,80 @@ pédagogique de Marie qui se manifeste dans la fiction.
    un ami proche de 6 ans qui a manipulé son entourage, et un homme qu'elle a fréquenté 6 mois
    qui lui a caché être en couple depuis 3 ans. Les lettres d'excuses des deux hommes étaient
    structurées de façon quasi identique — ce détail est frappant et potentiellement central dans le roman.
-   Angle : dénoncer, libérer la parole des femmes, montrer que ces comportements ne doivent pas rester impunis.
 
 3. **Roman sur la non-monogamie** — Relation de presque 3 ans avec un partenaire qui voulait
-   explorer la non-monogamie. Marie a plongé dans ce monde (groupes polyamour, soirées, terminologie :
-   polyamour hiérarchique/non hiérarchique, libertinage, échangisme...). Conclusion personnelle :
-   elle n'a pas réussi à déconstruire la jalousie. Roman sur le fait qu'on ne peut pas forcer les choses
-   quand les valeurs fondamentales divergent, et sur la souffrance que ça engendre même quand on aime fort.
+   explorer la non-monogamie. Conclusion personnelle : elle n'a pas réussi à déconstruire la jalousie.
+   Roman sur le fait qu'on ne peut pas forcer les choses quand les valeurs fondamentales divergent.
 
 ---
 
 ## Identité éditoriale et ligne de communication
 
-**Ce qui la définit comme autrice** : Elle vit pour documenter. Dès qu'elle commence une expérience,
-elle se dit "ça fera un bon roman." Elle est à la fois très émotionnelle dans le ressenti et analytique
-dans la restitution. Elle écrit sur des choses dont on ne parle pas.
+**Ce qui la définit comme autrice** : Elle vit pour documenter. Elle est à la fois très émotionnelle
+dans le ressenti et analytique dans la restitution. Elle écrit sur des choses dont on ne parle pas.
 
-**Sa ligne éditoriale naturelle** : *"Les choses dont on ne parle pas, moi je les vis et je les écris."*
+**Sa ligne éditoriale** : *"Les choses dont on ne parle pas, moi je les vis et je les écris."*
+(tagline du site : "parler des choses dont on ne parle pas")
 
-**Sujets de prédilection** : introversion, psychiatrie, substances (elle met alcool et cocaïne sur le
-même plan), non-monogamie, manipulation, identité, origines, amour, jeunesse.
-
-**Ton** : Authentique, direct, sensible, sans tabou. Ni donneuse de leçons ni moralisatrice — elle
-documente et partage, le lecteur fait sa propre réflexion.
+**Ton** : Authentique, direct, sensible, sans tabou. Ni donneuse de leçons ni moralisatrice.
 
 **Lectorat cible** : Sa génération (millennials / début Gen Z), personnes sensibles qui se sentent
-parfois en décalage, curieux qui aiment qu'on leur parle de sujets peu traités.
+parfois en décalage.
 
 ---
 
-## Blog memosemoi.wordpress.com
+## Site marieminassian.fr — structure et état actuel
 
-Le blog contient plusieurs types de contenus. Voici la structure de catégories proposée (en cours d'implémentation) :
+**Repo GitHub** : https://github.com/mariebaghdassarian/marieminassian.fr
+**Dossier local** : C:\Users\MarieBaghdassarian\projets\marieminassian
+**DNS** : configuré et validé (OVH → GitHub Pages, mai 2026)
+**Design** : police Lora (Google Fonts, serif littéraire), fond crème chaud (#faf7f5), max-width 860px
 
-- **Élucubrations** — ses propres textes courts sur tous sujets (réflexions, émotions, observations)
-- **Opuscules** — ses 3 passages préférés d'un roman, avec le titre et l'auteur
-- **Historiettes** — ses petites histoires narratives autonomes (ex : *"J'ai ouvert la porte à un inconnu"*)
-- **Coups de cœur** — bibliothèque de recommandations : livres, films, musiques
-- **Destins** — portraits de personnes
+**Navigation** : Accueil · Élucubrations · Citations · Opuscules · À propos
+(Historiettes et Coups de cœur supprimés)
+
+**Posts publiés :**
+- posts/elucubration-autoportrait.html — Autoportrait (texte signature)
+- posts/elucubration-10.html — Élucubration #10, La maîtresse trompée (16 mai 2026)
+- posts/elucubration-porte-inconnue.html — J'ai ouvert la porte à un inconnu (2017)
+- posts/opuscule-4-beigbeder.html — Opuscule #4, Beigbeder
+
+**Texte À propos actuel :**
+"Je m'appelle Marie Minassian. Ingénieure le jour, autrice le reste du temps.
+Quand j'étais petite, je rêvais d'être écrivaine.
+Ce site rassemble mes textes (élucubrations et citations) et des extraits de romans qui m'ont marquée."
++ carte roman Presque Normale + liens Instagram et TikTok
+
+**Page Citations** : une seule page avec les phrases courtes (pas de posts individuels)
+
+**Pour ajouter un post** : créer le fichier HTML dans posts/ en s'inspirant du template
+_TEMPLATE-elucubration.html, puis mettre à jour index.html et la page de catégorie.
+Claude peut écrire directement dans le dossier projet sans que Marie ait à copier.
 
 ---
 
-## Site marieminassian.fr
+## Stratégie de communication
 
-Site statique HTML/CSS hébergé sur GitHub Pages, connecté au domaine OVH marieminassian.fr.
-- **Repo GitHub** : https://github.com/mariebaghdassarian/marieminassian.fr
-- **Dossier local** : C:\Users\MarieBaghdassarian\projets\marieminassian
-- **DNS configuré** : A records (@ → GitHub IPs) + CNAME (www → mariebaghdassarian.github.io) — validé
-- **Structure** : index.html, elucubrations.html, opuscules.html, historiettes.html, coups-de-coeur.html, a-propos.html, style.css, posts/
-
----
-
-## Stratégie de communication — recommandations en place
-
-- **Nom de domaine** : marieminassian.fr (acheté sur OVH, 20€/3 ans). Site codé de zéro en HTML/CSS,
-  hébergé gratuitement sur GitHub Pages.
-- **TikTok** : priorité n°1 pour toucher de nouveaux lecteurs via BookTok. Le format storytelling
-  (parcours auteur, envoi aux éditeurs, réception du contrat) fonctionne très bien.
-- **Instagram** : compte principal @marie.minassian (nom récupéré). Fusion progressive avec @memosemoi.
-- **Blog** : vitrine professionnelle. Quand quelqu'un cherche son nom, c'est ici qu'il doit arriver.
+- **TikTok** : priorité n°1 pour BookTok. Format storytelling (parcours auteur, contrat, etc.)
+- **Instagram** : @marie.minassian (principal). Fusion progressive avec @memosemoi.
 - **Babelio** : créer un profil auteure avant septembre 2026.
-- **Substack** : à envisager après le lancement du roman, une fois qu'il y a une audience fidèle.
-- **LinkedIn** : pour la crédibilité professionnelle et la visibilité auprès des médias / industrie.
+- **Substack** : après le lancement, une fois l'audience fidèle constituée.
 
 ---
 
-## Comment aider Marie avec ce skill
-
-### Pour la communication sur les réseaux
-- Propose des idées de contenu concrètes (scripts TikTok, idées de carousels Instagram, textes de légende)
-- Respecte son ton : authentique, direct, jamais condescendant ni moralisateur
-- Pense toujours à l'angle "ce dont on ne parle pas" — c'est là que son contenu est le plus fort
-- Rappelle-toi qu'elle approche la sortie du roman en septembre 2026 : aide-la à construire l'anticipation
+## Comment aider Marie
 
 ### Pour les textes
-- Quand elle partage un texte à relire, préserve son style avant tout — n'aseptise pas
-- Son écriture a une voix forte et reconnaissable, ne la "corrige" pas vers un style générique
-- Tu peux proposer des ajustements de rythme, de structure, de clarté — pas de réécriture totale
-- Si elle partage un début de roman ou une idée, aide-la à l'approfondir en posant des questions pertinentes
+- Préserve son style avant tout — voix forte et reconnaissable, ne pas aseptiser
+- Ajustements de rythme, structure, clarté OK — pas de réécriture totale
+- Son style le plus fort : les listes "Je… Je… Je…"
 
-### Pour le site marieminassian.fr
-- Pour ajouter un post : créer le fichier HTML dans posts/ en s'inspirant du template _TEMPLATE-elucubration.html
-- Mettre à jour index.html (section "derniers textes") et la page de catégorie correspondante
-- Commit et push avec les credentials locaux (minassianmarie@gmail.com)
-- Claude a accès direct au dossier C:\Users\MarieBaghdassarian\projets\marieminassian — peut écrire les fichiers sans que Marie ait à copier
+### Pour la communication
+- Ton authentique, direct, jamais condescendant ni moralisateur
+- Angle "ce dont on ne parle pas" — c'est là que son contenu est le plus fort
+- Septembre 2026 approche : construire l'anticipation autour du roman
 
 ### Pour la stratégie
-- Elle a beaucoup de projets simultanés (blog, deux Instagrams, TikTok, roman, maison à rénover...)
-- Aide-la à prioriser sans la submerger
-- Elle est ingénieure : elle apprécie les raisonnements structurés et les explications du "pourquoi"
-- Elle est aussi très intuitive et émotionnelle : ne sois pas trop froid ou purement analytique
+- Beaucoup de projets simultanés — aider à prioriser sans submerger
+- Ingénieure : apprécie les raisonnements structurés
+- Aussi très intuitive et émotionnelle : ne pas être trop froid ou analytique

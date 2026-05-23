@@ -30,7 +30,7 @@ body {
   line-height: 1.8;
   color: var(--noir);
   background: var(--fond);
-  padding: 0 2rem;
+  padding: 0 1.25rem;
 }
 
 .site {
@@ -78,22 +78,21 @@ nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0;
+  gap: 0.5rem;
   margin-bottom: 3rem;
 }
 
 nav a {
   font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gris);
   text-decoration: none;
-  padding: 0.45rem 1.2rem;
+  padding: 0.55rem 1.4rem;
   border: 1px solid var(--bordure);
-  margin-right: -1px;
-  margin-bottom: -1px;
-  transition: background 0.15s, color 0.15s;
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
   white-space: nowrap;
   font-weight: 400;
 }
@@ -101,6 +100,7 @@ nav a {
 nav a:hover {
   color: var(--noir);
   background: var(--gris-clair);
+  border-color: var(--gris);
 }
 
 nav a.active {
@@ -269,6 +269,47 @@ nav a.active {
 
 .retour:hover { color: var(--noir); }
 
+/* ---- PAGE D'ACCUEIL — CARTES CATÉGORIES ---- */
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.categorie-card {
+  border: 1px solid var(--bordure);
+  padding: 2.25rem 2rem;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: background 0.15s, border-color 0.15s;
+  background: var(--blanc);
+}
+
+.categorie-card:hover {
+  background: var(--gris-clair);
+  border-color: var(--gris);
+}
+
+.categorie-titre {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: var(--noir);
+}
+
+.categorie-desc {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: var(--gris-fonce);
+  line-height: 1.6;
+  font-weight: 300;
+  font-style: italic;
+}
+
 /* ---- PAGE CITATIONS ---- */
 
 .citation {
@@ -373,10 +414,17 @@ footer {
 
 /* ---- RESPONSIVE ---- */
 
+@media (max-width: 700px) {
+  .categories {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 @media (max-width: 600px) {
   html { font-size: 16px; }
-  body { padding: 0 1.25rem; }
+  body { padding: 0 1rem; }
   .nom { font-size: 1.65rem; }
-  nav a { padding: 0.4rem 0.85rem; font-size: 0.62rem; }
+  nav a { padding: 0.45rem 1rem; font-size: 0.68rem; }
   .post-header h1 { font-size: 1.4rem; }
 }
