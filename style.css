@@ -25,7 +25,10 @@
   --max-width: 860px;
 }
 
-html { font-size: 17px; }
+html {
+  font-size: 17px;
+  scrollbar-gutter: stable; /* évite le décalage au changement de page */
+}
 
 body {
   font-family: 'Lora', Georgia, serif;
