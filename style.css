@@ -414,6 +414,11 @@ nav a.active {
   border-color: var(--noir);
 }
 
+.accueil-sociaux {
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
 /* ---- FOOTER ---- */
 
 footer {
