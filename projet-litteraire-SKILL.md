@@ -57,6 +57,24 @@ git config --local user.name "Marie Minassian"
 ```
 Ne jamais suggérer `git config --global` — cela écraserait sa config pro et impacterait son travail.
 
+**Git — ne jamais exécuter les commandes git directement**
+
+Marie gère elle-même les commits et pushes depuis son terminal.
+Ne jamais tenter de lancer `git commit`, `git push`, `git rm`, etc. via bash.
+Se contenter de lui donner les commandes à copier-coller.
+
+**Terminal utilisé : Git Bash (MINGW64)** — pas PowerShell, pas cmd.
+Les commandes Windows comme `Remove-Item` ne fonctionnent pas.
+Utiliser la syntaxe bash : `rm -f .git/index.lock`, etc.
+
+Exemple de bloc à donner :
+```bash
+rm -f .git/index.lock
+git add -A
+git commit -m "message"
+git push
+```
+
 **Comptes GitHub :**
 - GitHub perso : https://github.com/mariebaghdassarian/
 - Repo du site : https://github.com/mariebaghdassarian/marieminassian.fr
