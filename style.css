@@ -1,9 +1,10 @@
 /* ============================================================
    marieminassian.fr — feuille de style principale
-   Police texte : Georgia (serif, incluse dans tous les OS)
-   Police UI : system-ui (sans-serif système)
-   Couleurs : noir, blanc, gris uniquement
+   Polices : Lora (serif littéraire) + DM Sans (UI)
+   Palette : tons chauds crème / gris rosé
    ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -12,23 +13,24 @@
 }
 
 :root {
-  --noir: #1a1a1a;
-  --gris-fonce: #555;
-  --gris: #888;
-  --gris-clair: #f2f2f0;
-  --bordure: #e0e0e0;
+  --noir: #2d2624;
+  --gris-fonce: #5c504d;
+  --gris: #a0908c;
+  --gris-clair: #f0eae6;
+  --bordure: #e8ddd9;
+  --fond: #faf7f5;
   --blanc: #ffffff;
-  --max-width: 680px;
+  --max-width: 860px;
 }
 
 html { font-size: 17px; }
 
 body {
-  font-family: Georgia, 'Times New Roman', serif;
-  line-height: 1.75;
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.8;
   color: var(--noir);
-  background: var(--blanc);
-  padding: 0 1.5rem;
+  background: var(--fond);
+  padding: 0 2rem;
 }
 
 .site {
@@ -53,19 +55,21 @@ header a {
 
 .nom {
   display: block;
+  font-family: 'Lora', Georgia, serif;
   font-size: 2rem;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--noir);
 }
 
 .tagline {
   display: block;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.75rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.72rem;
   color: var(--gris);
-  margin-top: 0.5rem;
-  letter-spacing: 0.1em;
+  margin-top: 0.55rem;
+  letter-spacing: 0.12em;
+  font-weight: 300;
 }
 
 /* ---- NAVIGATION ---- */
@@ -79,18 +83,19 @@ nav {
 }
 
 nav a {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gris);
   text-decoration: none;
-  padding: 0.45rem 1.1rem;
+  padding: 0.45rem 1.2rem;
   border: 1px solid var(--bordure);
   margin-right: -1px;
   margin-bottom: -1px;
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
+  font-weight: 400;
 }
 
 nav a:hover {
@@ -107,18 +112,19 @@ nav a.active {
 /* ---- LABEL DE SECTION ---- */
 
 .label {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gris);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  font-weight: 300;
 }
 
 /* ---- LISTE DE POSTS ---- */
 
 .post {
-  padding: 1.75rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--bordure);
 }
 
@@ -127,29 +133,32 @@ nav a.active {
 }
 
 .post-meta {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.7rem;
   color: var(--gris);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  font-weight: 300;
 }
 
 .post-categorie {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: var(--gris-clair);
   padding: 2px 8px;
   color: var(--gris-fonce);
+  font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 .post-titre {
   font-size: 1.2rem;
-  font-weight: normal;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+  line-height: 1.45;
+  font-family: 'Lora', Georgia, serif;
 }
 
 .post-titre a {
@@ -159,24 +168,28 @@ nav a.active {
 
 .post-titre a:hover {
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--bordure);
 }
 
 .post-extrait {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   color: var(--gris-fonce);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  font-style: italic;
+  line-height: 1.7;
 }
 
 .lire {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.7rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   color: var(--gris);
   text-decoration: none;
   border-bottom: 1px solid var(--bordure);
   padding-bottom: 1px;
   transition: color 0.15s, border-color 0.15s;
+  font-weight: 400;
 }
 
 .lire:hover {
@@ -197,19 +210,20 @@ nav a.active {
 }
 
 .post-header h1 {
-  font-size: 1.6rem;
-  font-weight: normal;
+  font-size: 1.7rem;
+  font-weight: 400;
   line-height: 1.3;
+  font-family: 'Lora', Georgia, serif;
 }
 
 .post-contenu {
   font-size: 1rem;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--noir);
 }
 
 .post-contenu p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.4rem;
 }
 
 .post-contenu p:last-child {
@@ -218,18 +232,19 @@ nav a.active {
 
 /* Pour les opuscules : passages numérotés */
 .extrait {
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
   padding-left: 1.5rem;
   border-left: 2px solid var(--bordure);
 }
 
 .extrait-num {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.7rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.68rem;
   letter-spacing: 0.1em;
   color: var(--gris);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
+  font-weight: 300;
 }
 
 .extrait-source {
@@ -237,84 +252,22 @@ nav a.active {
   font-size: 0.9rem;
   color: var(--gris);
   margin-top: 2rem;
+  font-family: 'Lora', Georgia, serif;
 }
 
 /* Retour */
 .retour {
   display: inline-block;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.7rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   color: var(--gris);
   text-decoration: none;
   margin-bottom: 2rem;
+  font-weight: 300;
 }
 
 .retour:hover { color: var(--noir); }
-
-/* ---- PAGE À PROPOS ---- */
-
-.apropos-texte {
-  font-size: 1rem;
-  line-height: 1.85;
-}
-
-.apropos-texte p {
-  margin-bottom: 1.25rem;
-}
-
-.roman-card {
-  border: 1px solid var(--bordure);
-  padding: 1.5rem;
-  margin: 2rem 0;
-}
-
-.roman-titre {
-  font-style: italic;
-  font-size: 1.3rem;
-  font-weight: normal;
-  margin-bottom: 0.3rem;
-}
-
-.roman-sous {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  color: var(--gris);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.roman-desc {
-  font-size: 0.95rem;
-  color: var(--gris-fonce);
-  line-height: 1.75;
-}
-
-.liens-sociaux {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.lien-social {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gris);
-  text-decoration: none;
-  border: 1px solid var(--bordure);
-  padding: 0.4rem 0.9rem;
-  transition: background 0.15s, color 0.15s;
-}
-
-.lien-social:hover {
-  background: var(--noir);
-  color: var(--blanc);
-  border-color: var(--noir);
-}
 
 /* ---- PAGE CITATIONS ---- */
 
@@ -329,9 +282,79 @@ nav a.active {
 
 .citation p {
   font-size: 1.15rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--noir);
   font-style: italic;
+  font-family: 'Lora', Georgia, serif;
+}
+
+/* ---- PAGE À PROPOS ---- */
+
+.apropos-texte {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.apropos-texte p {
+  margin-bottom: 1.4rem;
+}
+
+.roman-card {
+  border: 1px solid var(--bordure);
+  padding: 1.75rem;
+  margin: 2rem 0;
+  background: var(--blanc);
+}
+
+.roman-titre {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.roman-sous {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--gris);
+  margin-bottom: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.roman-desc {
+  font-size: 0.95rem;
+  color: var(--gris-fonce);
+  line-height: 1.8;
+  font-family: 'Lora', Georgia, serif;
+}
+
+.liens-sociaux {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+}
+
+.lien-social {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gris);
+  text-decoration: none;
+  border: 1px solid var(--bordure);
+  padding: 0.45rem 1rem;
+  transition: background 0.15s, color 0.15s;
+  font-weight: 400;
+}
+
+.lien-social:hover {
+  background: var(--noir);
+  color: var(--fond);
+  border-color: var(--noir);
 }
 
 /* ---- FOOTER ---- */
@@ -339,19 +362,21 @@ nav a.active {
 footer {
   text-align: center;
   padding: 2.5rem 0 2rem;
-  margin-top: 3rem;
+  margin-top: 3.5rem;
   border-top: 1px solid var(--bordure);
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.68rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.65rem;
   color: var(--gris);
   letter-spacing: 0.06em;
+  font-weight: 300;
 }
 
 /* ---- RESPONSIVE ---- */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   html { font-size: 16px; }
-  .nom { font-size: 1.6rem; }
-  nav a { padding: 0.4rem 0.75rem; font-size: 0.62rem; }
-  .post-header h1 { font-size: 1.35rem; }
+  body { padding: 0 1.25rem; }
+  .nom { font-size: 1.65rem; }
+  nav a { padding: 0.4rem 0.85rem; font-size: 0.62rem; }
+  .post-header h1 { font-size: 1.4rem; }
 }
