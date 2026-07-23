@@ -7,7 +7,7 @@
   <title>Marie Minassian — autrice</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&family=Handlee&family=Shadows+Into+Light+Two&family=Architects+Daughter&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
   /* ============================================================
      marieminassian.fr — Le Livre (auto-contenu)
@@ -143,6 +143,11 @@
     padding-bottom:.9rem;margin-bottom:1.2rem;flex:0 0 auto;
     border-bottom:1px solid rgba(194,161,98,.28);
   }
+  .run-back{
+    background:0;border:0;padding:0;cursor:pointer;
+    font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;
+  }
+  .run-back:hover{color:var(--ink);}
   .leaf-body{
     flex:1 1 auto;overflow-y:auto;overflow-x:hidden;
     scrollbar-width:thin;scrollbar-color:var(--rose-l) transparent;
@@ -230,13 +235,13 @@
   }
 
   .bookmarks{
-    position:absolute;top:-14px;right:26px;
-    display:flex;gap:10px;z-index:6;
+    position:absolute;top:-22px;right:22px;
+    display:flex;gap:8px;z-index:6;
     align-items:flex-start;
   }
   .book.closed .bookmarks{opacity:0;pointer-events:none;}
   .bm{
-    width:30px;height:96px;border:0;cursor:pointer;padding:0;
+    width:26px;height:74px;border:0;cursor:pointer;padding:0;
     background:var(--c,#c98a96);
     border-radius:3px 3px 0 0;
     box-shadow:0 4px 6px rgba(67,46,54,.22);
@@ -248,14 +253,14 @@
     background:inherit;
     clip-path:polygon(0 0,100% 0,50% 100%);
   }
-  .bm:hover{transform:translateY(5px);}
-  .bm.active{height:112px;filter:saturate(1.15);}
+  .bm:hover{transform:translateY(4px);}
+  .bm.active{height:86px;filter:saturate(1.15);}
   .bm .bm-label{
     position:absolute;inset:0;
     display:flex;align-items:center;justify-content:center;
-    padding-top:6px;
+    padding-top:3px;
     writing-mode:vertical-rl;
-    font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:.1em;
+    font-family:'DM Sans',sans-serif;font-size:.54rem;letter-spacing:.04em;
     text-transform:uppercase;color:rgba(255,255,255,.95);white-space:nowrap;
   }
 
@@ -401,16 +406,17 @@
     .pl-name{font-size:1.9rem;}
   }
 
+  :root{--hand:'Caveat',cursive;}
   /* ============================================================
-     Écriture manuscrite — Dancing Script partout
+     Écriture manuscrite — police pilotée par --hand
      (overrides appliqués en fin de feuille : titres + texte courant
      + petits libellés, avec tailles adaptées à la cursive)
      ============================================================ */
-  body{font-family:'Dancing Script',cursive;}
+  body{font-family:var(--hand);}
 
   /* Titres */
   .pl-name,.cv-name,.somm-title,.sec-title,.toc-name,.pi-title,.text-title,
-  .cita,.apropos .roman-titre{font-family:'Dancing Script',cursive;}
+  .cita,.apropos .roman-titre{font-family:var(--hand);}
   .pl-name{font-size:2.4rem;}
   .cv-name{font-size:2.7rem;}
   .somm-title,.sec-title{font-size:2rem;}
@@ -436,13 +442,13 @@
   .sec-label,.toc-pg,.pi-go,.back-link,.text-meta,.bm .bm-label,
   .text-body .extrait-num,.apropos .roman-label,.apropos .roman-sous,
   .apropos .lien-social{
-    font-family:'Dancing Script',cursive;
+    font-family:var(--hand);
     text-transform:none;
     letter-spacing:.03em;
   }
   .pl-role{font-size:1rem;}
   .pl-foot{font-size:.9rem;}
-  .run-head{font-size:.95rem;padding-bottom:.6rem;margin-bottom:.9rem;}
+  .run-head{font-size:.95rem;padding-bottom:.6rem;margin-bottom:.9rem;text-align:left;}
   .folio{font-size:.9rem;padding-top:.5rem;}
   .cv-role{font-size:1.1rem;}
   .cv-hint{font-size:.95rem;bottom:2.6%;}
@@ -464,15 +470,44 @@
   .page-back{
     position:absolute;top:8px;left:10px;z-index:6;
     background:0;border:0;cursor:pointer;padding:4px 8px;
-    font-family:'Dancing Script',cursive;font-size:1.3rem;line-height:1;
+    font-family:var(--hand);font-size:1.3rem;line-height:1;
     color:var(--rose);transition:color .2s;
   }
   .page-back:hover{color:var(--ink);}
   .page-back .pb-txt{font-size:.9rem;margin-left:4px;}
   .page-back[hidden]{display:none;}
+  .book.closed .page-back{display:none;}
 
   /* Glisser-tourner à la souris */
   body.turning{cursor:grabbing;user-select:none;-webkit-user-select:none;}
+
+  /* Cœurs */
+  .heart-bar{text-align:center;margin-top:1.4rem;}
+  .heart{
+    background:0;border:1px solid var(--rose-l);border-radius:20px;
+    padding:.15rem .95rem;cursor:pointer;
+    font-family:var(--hand);font-size:1.05rem;color:var(--rose);
+    transition:border-color .15s, background .15s, transform .1s;
+  }
+  .heart:hover{border-color:var(--rose);transform:scale(1.06);}
+  .heart.liked{background:#fdeef1;color:#c2596c;border-color:#e9b7c1;cursor:default;transform:none;}
+
+  /* Sélecteur d'écriture — chaque lecteur choisit sa police préférée */
+  .font-switch{
+    position:fixed;left:14px;bottom:12px;z-index:60;
+    background:rgba(251,246,240,.92);border:1px solid var(--rose-l);
+    border-radius:18px;padding:.3rem .9rem;cursor:pointer;
+    font-family:var(--hand);font-size:.95rem;color:var(--ink2);
+    box-shadow:0 2px 8px rgba(67,46,54,.18);
+  }
+  .font-switch:hover{border-color:var(--rose);color:var(--ink);}
+  @media (max-width:760px){
+    .font-switch{
+      left:10px;
+      bottom:calc(8px + env(safe-area-inset-bottom, 0px));
+      font-size:.85rem;padding:.25rem .7rem;
+    }
+  }
 
   @media (max-width:480px){
     .cv-name{font-size:2.3rem;}
@@ -499,8 +534,9 @@
         </div>
       </div>
 
+      <button class="page-back" id="backBtn" aria-label="retour" hidden>↩<span class="pb-txt">retour</span></button>
+
       <div class="page page-right" id="rightPage">
-        <button class="page-back" id="backBtn" aria-label="retour" hidden>↩<span class="pb-txt">retour</span></button>
         <div class="content" id="content">
           <div class="leaf-inner"><div class="leaf-body"><p class="loading">…</p></div></div>
         </div>
@@ -525,6 +561,8 @@
 
     </div>
   </div>
+
+  <button class="font-switch" id="fontSwitch" title="Essayer une autre écriture">✍ Caveat</button>
 
   <noscript>
     <div style="max-width:640px;margin:3rem auto;font-family:Lora,serif;color:#432e36;text-align:center;padding:1.5rem;">
@@ -575,11 +613,11 @@
           &lt;span class=&quot;post-categorie&quot;&gt;Élucubration&lt;/span&gt;" data-extrait="Un jour, alors que j'étais seule à la maison, à errer dans mon salon et mes pensées, quelqu'un a toqué à la porte.">
     <h1>J'ai ouvert la porte à un inconnu</h1>
     <div class="src-body">
-<p>Un jour, alors que j'étais seule à la maison, à errer dans mon salon et mes pensées, quelqu'un a toqué à la porte. J'ai sursauté et essayé de me souvenir si j'attendais quelqu'un. Et non, je n'attendais personne. Discrètement, je me suis faufilée vers la porte d'entrée et j'ai regardé à travers l'œilleton. C'était un jeune homme que je ne connaissais pas. Il avait la tête baissée, les cheveux ébouriffés et les mains croisées derrière le dos. Il semblait trépigner d'impatience que je lui ouvre. D'un coup, il a levé les yeux dans ma direction. Lorsque j'ai capté son regard, j'ai subitement reculé la tête en retenant mon souffle. J'avais peur qu'il m'aperçoive ou m'entende respirer. Réalisant que c'était impossible — et heureusement — je l'ai regardé à nouveau. Et puis je suis restée là quelques instants, à me faire aspirer par le bleu de ses yeux. Mon corps tout entier s'est mis à flancher, mes pensées s'envolaient une par une sans que je ne puisse les retenir, mes lèvres ne se touchaient plus, tout paraissait en suspension. J'ai réussi à cligner des yeux, et par la même occasion à rattraper une question&nbsp;: qui est cet inconnu qui met tout en silence autour de moi&nbsp;? J'avais peur et pourtant j'étais curieuse de connaître celui qui perturbait tous mes sens. J'avais une envie inquiète d'ouvrir la porte. J'ai dégluti entre deux respirations saccadées et ai saisi timidement la poignée avant de l'actionner d'une main tremblante. J'ai tiré calmement la porte vers moi en faisant un pas en arrière.</p>
+<p>Un jour, alors que j'étais seule à la maison, à errer dans mon salon et mes pensées, quelqu'un a toqué à la porte. J'ai sursauté et essayé de me souvenir si j'attendais quelqu'un. Et non, je n'attendais personne. Discrètement, je me suis faufilée vers la porte d'entrée et j'ai regardé à travers l'œilleton. C'était un jeune homme que je ne connaissais pas. Il avait la tête baissée, les cheveux ébouriffés et les mains croisées derrière le dos. Il semblait trépigner d'impatience que je lui ouvre. D'un coup, il a levé les yeux dans ma direction. Lorsque j'ai capté son regard, j'ai subitement reculé la tête en retenant mon souffle. J'avais peur qu'il m'aperçoive ou m'entende respirer. Réalisant que c'était impossible — et heureusement — je l'ai regardé à nouveau. Et puis je suis restée là quelques instants, à me faire aspirer par le bleu de ses yeux. Mon corps tout entier s'est mis à flancher, mes pensées s'envolaient une par une sans que je puisse les retenir, mes lèvres ne se touchaient plus, tout paraissait en suspension. J'ai réussi à cligner des yeux, et par la même occasion à rattraper une question&nbsp;: qui est cet inconnu qui met tout en silence autour de moi&nbsp;? J'avais peur et pourtant j'étais curieuse de connaître celui qui perturbait tous mes sens. J'avais une envie inquiète d'ouvrir la porte. J'ai dégluti entre deux respirations saccadées et ai saisi timidement la poignée avant de l'actionner d'une main tremblante. J'ai tiré calmement la porte vers moi en faisant un pas en arrière.</p>
 
-        <p>Nous nous sommes retrouvés face à face, les bras ballants et les yeux dans les yeux. Et là, une tornade s'est créée autour de nous, ou du moins autour de moi. Mon esprit s'est échappé, laissant mon corps vide et tétanisé. Son corps émanait une lumière verte hypnotisante. Je ne contrôlais plus rien, ma main moite s'est détachée de la poignée. Et puis, il a fait un pas en avant, m'a dévisagé et est entré sans rien dire, en me frôlant sur son passage. J'étais toujours paralysée. Je fixais le paillasson vide, pendant qu'il s'appropriait les lieux sans retenue. Il a posé ses bagages, s'est servi un verre d'eau et s'est allongé sur le canapé, le tout d'un calme déconcertant, alors que dans ma tête, les ronds devenaient carrés. Il a pris le contrôle de mon appartement et de tout ce qu'il contenait, y compris mon corps, mon esprit et mon cœur. Je n'y voyais plus rien&nbsp;; tout était devenu flou autour de moi. Sauf lui. Ma réalité n'existait plus. Je ne savais plus rien. Je n'avais plus conscience de mes envies, de mes peurs, de moi.</p>
+        <p>Nous nous sommes retrouvés face à face, les bras ballants et les yeux dans les yeux. Et là, une tornade s'est créée autour de nous, ou du moins autour de moi. Mon esprit s'est échappé, laissant mon corps vide et tétanisé. De son corps émanait une lumière verte hypnotisante. Je ne contrôlais plus rien, ma main moite s'est détachée de la poignée. Et puis, il a fait un pas en avant, m'a dévisagée et est entré sans rien dire, en me frôlant sur son passage. J'étais toujours paralysée. Je fixais le paillasson vide, pendant qu'il s'appropriait les lieux sans retenue. Il a posé ses bagages, s'est servi un verre d'eau et s'est allongé sur le canapé, le tout d'un calme déconcertant, alors que dans ma tête, les ronds devenaient carrés. Il a pris le contrôle de mon appartement et de tout ce qu'il contenait, y compris mon corps, mon esprit et mon cœur. Je n'y voyais plus rien&nbsp;; tout était devenu flou autour de moi. Sauf lui. Ma réalité n'existait plus. Je ne savais plus rien. Je n'avais plus conscience de mes envies, de mes peurs, de moi.</p>
 
-        <p>Je me suis dirigée machinalement vers lui et me suis assise à côté, sans rien dire, sans rien pouvoir faire. Et puis j'ai ouvert ma poitrine, j'ai détaché mon cœur sans regarder et je lui ai donné. Sans qu'il ne demande rien. Sans savoir pourquoi. Il l'a pris, s'est levé et l'a mis dans sa valise. Il a déposé son verre dans la cuisine et a repris ses affaires. Puis il s'en est allé. Je l'ai regardé partir, démunie de tous mes sentiments. J'étais toujours assise.</p>
+        <p>Je me suis dirigée machinalement vers lui et me suis assise à côté, sans rien dire, sans rien pouvoir faire. Et puis j'ai ouvert ma poitrine, j'ai détaché mon cœur sans regarder et je lui ai donné. Sans qu'il demande rien. Sans savoir pourquoi. Il l'a pris, s'est levé et l'a mis dans sa valise. Il a déposé son verre dans la cuisine et a repris ses affaires. Puis il s'en est allé. Je l'ai regardé partir, démunie de tous mes sentiments. J'étais toujours assise.</p>
 
         <p>Où est donc passée cette valise&nbsp;?</p>
     </div>
@@ -606,13 +644,13 @@
 
         <p>J'ai passé 4 mois en Thaïlande juste avant de partir pour l'Italie, alors j'étais déjà un peu ailleurs dans ma tête, et le cumul de ces deux voyages m'a permis de passer une année extraordinaire. Rien ne peut vous enrichir autant que de voyager.</p>
 
-        <p>La seule différence, c'est que je n'étais pas seule en Thaïlande, alors qu'en arrivant en Italie, je ne connaissais personne. Quand je suis arrivée, je me suis vite sentie à l'écart, au milieu de tous ces étudiants, cette ville que je ne connaissais pas, ces nouveaux colocataires… Et puis, je me suis rendu compte que finalement on l'était tous&nbsp;: nous sommes tous arrivés seuls, et c'est cette solitude commune qui nous a poussé à construire ces liens si vite et si fort. On sait qu'on n'est pas là indéfiniment, qu'on n'a que quelques mois&nbsp;: alors on profite au maximum, sans perdre une minute. Chaque jour, quelqu'un nous propose quelque chose à faire, et on ne peut pas dire non parce qu'on sait qu'il peut se passer n'importe quoi de génial et d'inattendu et qu'on risquerait de regretter d'être resté chez soi. Et à chaque fois, on se dit qu'on a bien fait d'y aller parce qu'on se retrouve dans une pièce avec des gens qui viennent des quatre coins du monde, on découvre de nouvelles cultures, on parle toutes les langues qu'on peut, tout en étant dans un seul pays, et c'est magique. Jusqu'au dernier jour, la dernière minute, on rencontre de nouvelles personnes. C'est une course contre la montre. À la fin, on est une seule grande famille&nbsp;; quand une personne va quelque part, tous les autres sont là, c'est comme une grande toile, on est tous connectés.</p>
+        <p>La seule différence, c'est que je n'étais pas seule en Thaïlande, alors qu'en arrivant en Italie, je ne connaissais personne. Quand je suis arrivée, je me suis vite sentie à l'écart, au milieu de tous ces étudiants, cette ville que je ne connaissais pas, ces nouveaux colocataires… Et puis, je me suis rendu compte que finalement on l'était tous&nbsp;: nous sommes tous arrivés seuls, et c'est cette solitude commune qui nous a poussés à construire ces liens si vite et si fort. On sait qu'on n'est pas là indéfiniment, qu'on n'a que quelques mois&nbsp;: alors on profite au maximum, sans perdre une minute. Chaque jour, quelqu'un nous propose quelque chose à faire, et on ne peut pas dire non parce qu'on sait qu'il peut se passer n'importe quoi de génial et d'inattendu et qu'on risquerait de regretter d'être resté chez soi. Et à chaque fois, on se dit qu'on a bien fait d'y aller parce qu'on se retrouve dans une pièce avec des gens qui viennent des quatre coins du monde, on découvre de nouvelles cultures, on parle toutes les langues qu'on peut, tout en étant dans un seul pays, et c'est magique. Jusqu'au dernier jour, la dernière minute, on rencontre de nouvelles personnes. C'est une course contre la montre. À la fin, on est une seule grande famille&nbsp;; quand une personne va quelque part, tous les autres sont là, c'est comme une grande toile, on est tous connectés.</p>
 
         <p>On ne veut pas que ça s'arrête, chaque soir on dit au revoir et puis finalement on se sent obligé de refaire quelque chose le lendemain. Et quand le vrai dernier soir arrive, on a l'impression qu'on va tout perdre d'un coup, que notre vie va se décolorer. On est triste pour la première fois depuis le début de l'aventure. On rentre chez soi, on est content de retrouver ses amis, sa famille, mais d'un autre côté, on repense à tout ce qu'on a vécu. Et les souvenirs défilent mais ne s'arrêtent jamais, parce qu'on en a tellement que c'est sans fin. On repense à tous les fous rires, à toutes les poignées de main, à tous les visages qu'on a croisés, les sourires qu'on a échangés. À toutes les soirées qu'on a oubliées mais qui nous ont été racontées, aux chutes, aux vélos volés, aux calzones de lendemain de soirée, aux spritz, aux gin tonic… Et ça continue jusqu'à l'infini.</p>
 
         <p>Une infinité de souvenirs en un temps fini, c'est ça Erasmus. C'est un truc qu'on ne peut pas définir, qu'on ne peut pas raconter ou expliquer en détail. C'est quelque chose qui se ressent au plus profond de nous, un lien qu'on partage tous et qu'on ne peut comprendre qu'entre nous. C'est une mini-vie indescriptible au sein de nos vies respectives, c'est notre vie commune, c'est notre voyage, notre échappée.</p>
 
-        <p>Alors voilà, ce petit texte pour remercier toutes les personnes qui ont croisé mon chemin ces 5 derniers mois et qui ont participé à rendre cette expérience inoubliable. À tous ceux chez qui j'ai squatté un soir, à tous ceux qui m'ont aidé à marcher droit à la sortie du Factory, à tous ceux qui m'ont payé des coups à boire, et surtout, à tous les amis qui ont su me comprendre en si peu de temps et m'écouter. Merci, merci, merci.</p>
+        <p>Alors voilà, ce petit texte pour remercier toutes les personnes qui ont croisé mon chemin ces 5 derniers mois et qui ont participé à rendre cette expérience inoubliable. À tous ceux chez qui j'ai squatté un soir, à tous ceux qui m'ont aidée à marcher droit à la sortie du Factory, à tous ceux qui m'ont payé des coups à boire, et surtout, à tous les amis qui ont su me comprendre en si peu de temps et m'écouter. Merci, merci, merci.</p>
     </div>
   </article>
   <article class="src-text" data-section="elucubrations" data-id="elucubration-toujours-plus" data-meta="&lt;span&gt;2016&lt;/span&gt;
@@ -670,7 +708,7 @@
     <div class="src-body">
 <p>Je pense souvent à tout arrêter, me déconnecter complètement de ce monde virtuel qui nous entoure pour me rapprocher de la réalité et des vrais échanges, pour retrouver l'essence de la vie.</p>
 
-        <p>Tous les soirs, en rentrant, je perds mon temps à parcourir mon fil d'actualité Facebook, sans savoir pourquoi, machinalement, et j'en arrive toujours à la même conclusion&nbsp;: je n'ai rien appris, j'ai juste arrêté de penser un instant. Et c'est ce que nous faisons tous&nbsp;: nous avons arrêté de penser, nous contemplons des vies de personnes que nous ne connaissons pas, ou très peu, et nous oublions de contempler la nôtre. On s'oublie, on ne s'écoute plus, on ne se pose plus de question sur nous-même. Qui suis-je&nbsp;? De quoi ai-je envie&nbsp;? Qu'est-ce que je ressens&nbsp;? Suis-je satisfait de ma vie&nbsp;?</p>
+        <p>Tous les soirs, en rentrant, je perds mon temps à parcourir mon fil d'actualité Facebook, sans savoir pourquoi, machinalement, et j'en arrive toujours à la même conclusion&nbsp;: je n'ai rien appris, j'ai juste arrêté de penser un instant. Et c'est ce que nous faisons tous&nbsp;: nous avons arrêté de penser, nous contemplons des vies de personnes que nous ne connaissons pas, ou très peu, et nous oublions de contempler la nôtre. On s'oublie, on ne s'écoute plus, on ne se pose plus de question sur nous-mêmes. Qui suis-je&nbsp;? De quoi ai-je envie&nbsp;? Qu'est-ce que je ressens&nbsp;? Suis-je satisfait de ma vie&nbsp;?</p>
 
         <p>Comment voulez-vous qu'on se comprenne mutuellement alors qu'on n'est pas capable de se comprendre soi-même&nbsp;?</p>
 
@@ -692,10 +730,10 @@
         <p>Je suis sur les quais de la Seine avec mon meilleur ami. On cherche un briquet. Je vois un groupe de gens au loin, j'y vais toute guillerette.</p>
 
         <p>— Bonsoooir&nbsp;! Vous allez bien&nbsp;? Vous n'auriez pas un briquet par hasard&nbsp;?<br>
-        — Si, bien sûr&nbsp;! me répond un homme d'une trentaine d'années, portant un chapeau et une écharpe en lin. Il est très chaleureux et souriant. Et tu ne veux pas un petit crouton de pain avec ça&nbsp;? C'est moi qui les ai faits&nbsp;!<br>
+        — Si, bien sûr&nbsp;! me répond un homme d'une trentaine d'années, portant un chapeau et une écharpe en lin. Il est très chaleureux et souriant. Et tu ne veux pas un petit croûton de pain avec ça&nbsp;? C'est moi qui les ai faits&nbsp;!<br>
         — Oh cool&nbsp;! Ouais je veux bien goûter&nbsp;!</p>
 
-        <p>On entame une conversation qu'il m'est impossible de remémorer vu mon taux d'alcoolémie à ce moment de la soirée, mais je me souviens lui avoir dit&nbsp;:</p>
+        <p>On entame une conversation qu'il m'est impossible de me remémorer vu mon taux d'alcoolémie à ce moment de la soirée, mais je me souviens lui avoir dit&nbsp;:</p>
 
         <p>— Mais qu'est-ce qu'il y a de plus vrai que ça&nbsp;: l'amour, l'amitié, le partage, la communication&nbsp;?<br>
         — Rien, tu as raison.<br>
@@ -775,7 +813,7 @@
 
         <div class="extrait">
           <div class="extrait-num">#2</div>
-          <p>Rappelez-vous une chose&nbsp;: peu importe si vos choix ne vous mènent pas immédiatement là où vous vouliez être au moment de prendre vos décisions. Lorsque vous perdez quelque chose, vous gagnez toujours autre chose, et chaque expérience est une richesse. Votre nouvelle situation sera toujours différente de cette d'origine dont vous n'étiez pas satisfaite. Il ne tient qu'à vous de la faire évoluer jusqu'à ce qu'elle vous convienne.</p>
+          <p>Rappelez-vous une chose&nbsp;: peu importe si vos choix ne vous mènent pas immédiatement là où vous vouliez être au moment de prendre vos décisions. Lorsque vous perdez quelque chose, vous gagnez toujours autre chose, et chaque expérience est une richesse. Votre nouvelle situation sera toujours différente de celle d'origine dont vous n'étiez pas satisfaite. Il ne tient qu'à vous de la faire évoluer jusqu'à ce qu'elle vous convienne.</p>
         </div>
 
         <div class="extrait">
@@ -803,7 +841,7 @@
 
         <div class="extrait">
           <div class="extrait-num">#3</div>
-          <p>Ils sont tombés amoureux chacun de leur côté, amoureux pour de vrai, amoureux avec de l'amour à l'intérieur. Ils y ont cru, ils se sont racontés, ils se sont motivés, ils ont déchanté, ils se sont pris des sots, des pelles et des râteaux, ils ont ri, ils ont pleuré, ils se sont consolés et ils ont fini par apprendre Paris. Ses codes, ses privilèges et ses servitudes. Ses grands fauves, ses territoires et ses points d'eau. Ils ont travaillé comme des chiens, ils se sont nourris, pansés, beurrés, dégrisés, enguelés, quittés, gavés, gâtés, pourris, détestés, sevrés, réinitialisés, déçus, adorés, retrouvés et épaulés tout du long et surtout, ils ont appris à lever la tête ensemble. Ce sont eux qui ont vécu. Ce sont eux.</p>
+          <p>Ils sont tombés amoureux chacun de leur côté, amoureux pour de vrai, amoureux avec de l'amour à l'intérieur. Ils y ont cru, ils se sont racontés, ils se sont motivés, ils ont déchanté, ils se sont pris des sots, des pelles et des râteaux, ils ont ri, ils ont pleuré, ils se sont consolés et ils ont fini par apprendre Paris. Ses codes, ses privilèges et ses servitudes. Ses grands fauves, ses territoires et ses points d'eau. Ils ont travaillé comme des chiens, ils se sont nourris, pansés, beurrés, dégrisés, engueulés, quittés, gavés, gâtés, pourris, détestés, sevrés, réinitialisés, déçus, adorés, retrouvés et épaulés tout du long et surtout, ils ont appris à lever la tête ensemble. Ce sont eux qui ont vécu. Ce sont eux.</p>
         </div>
 
         <p class="extrait-source"><em>Billie</em>, Anna Gavalda, 2013</p>
@@ -888,7 +926,7 @@
   <!-- ====== À PROPOS ====== -->
   <div id="src-apropos">
 <p>
-          Officiellement ingénieure, autrice en devenir.
+          Officiellement ingénieure, officieusement autrice.
         </p>
 
         <p>
@@ -961,7 +999,7 @@
       var pw, ph;
       if(mobile){
         pw = Math.min(vw - 20, 460);
-        ph = Math.min(vh - 70, Math.round(pw * 1.5));
+        ph = Math.min(vh - 96, Math.round(pw * 1.5));
         pw = Math.min(pw, Math.round(ph / 1.5));
       } else {
         pw = Math.min(640, Math.floor((vw - 60) / 2));
@@ -1087,12 +1125,14 @@
     }
 
     function textBody(p){
-      return '<button class="back-link" data-goto="'+p.backIndex+'">← '+p.backLabel+'</button>'+
-             '<div class="text-head">'+
-               (p.meta? '<div class="text-meta">'+p.meta+'</div>':'')+
+      /* on retire le badge catégorie (la rubrique est déjà dans le titre courant) */
+      var meta = (p.meta||'').replace(/<span class="post-categorie">[\s\S]*?<\/span>/g,'').trim();
+      return '<div class="text-head">'+
+               (meta? '<div class="text-meta">'+meta+'</div>':'')+
                '<h1 class="text-title">'+esc(p.title)+'</h1>'+
              '</div>'+
-             '<div class="text-body">'+p.html+'</div>';
+             '<div class="text-body">'+p.html+'</div>'+
+             '<div class="heart-bar"><button class="heart" data-like="'+p.id+'" aria-label="j\'aime ce texte">♥ <span class="hc"></span></button></div>';
     }
 
     function aproposBody(){
@@ -1102,8 +1142,14 @@
     function leafHTML(i){
       var p = pages[i];
       var s = secOf(p.section);
+      var rh;
+      if(p.kind==='text' && p.backIndex!=null){
+        rh = '<button class="run-back" data-goto="'+p.backIndex+'">← '+(s? s.label : '')+'</button>';
+      } else {
+        rh = (s? s.label : 'Marie Minassian');
+      }
       return '<div class="leaf-inner">'+
-               '<div class="run-head">'+(s? s.label : 'Marie Minassian')+'</div>'+
+               '<div class="run-head">'+rh+'</div>'+
                '<div class="leaf-body">'+bodyHTML(p)+'</div>'+
                '<div class="folio">— '+(i+1)+' —</div>'+
              '</div>';
@@ -1169,7 +1215,46 @@
       nextBtn.disabled = (pos>=maxPos());
       backBtn.hidden = false;
       writeHash();
+      hydrateHearts();
     }
+
+    /* ---------- CŒURS (compteur public, un cœur par navigateur) ---------- */
+    var LIKE_API = 'https://abacus.jasoncameron.dev';
+    var LIKE_NS  = 'marieminassian-fr';
+    var likeCounts = {};
+    function isLiked(id){ try{ return !!localStorage.getItem('mm-liked-'+id); }catch(e){ return false; } }
+    function paintCount(id){
+      [].forEach.call(document.querySelectorAll('.heart[data-like="'+id+'"] .hc'), function(s){
+        s.textContent = likeCounts[id]!=null ? likeCounts[id] : '';
+      });
+    }
+    function hydrateHearts(){
+      if(typeof fetch === 'undefined') return;
+      [].forEach.call(document.querySelectorAll('.heart[data-like]'), function(btn){
+        var id = btn.getAttribute('data-like');
+        if(isLiked(id)) btn.classList.add('liked');
+        if(likeCounts[id]!=null){ paintCount(id); return; }
+        fetch(LIKE_API+'/get/'+LIKE_NS+'/'+encodeURIComponent(id))
+          .then(function(r){ return r.ok ? r.json() : {value:0}; })
+          .then(function(j){ likeCounts[id] = j.value||0; paintCount(id); })
+          .catch(function(){});
+      });
+    }
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest('.heart[data-like]');
+      if(!btn) return;
+      var id = btn.getAttribute('data-like');
+      if(isLiked(id)) return;
+      try{ localStorage.setItem('mm-liked-'+id,'1'); }catch(e2){}
+      btn.classList.add('liked');
+      likeCounts[id] = (likeCounts[id]||0)+1;
+      paintCount(id);
+      if(typeof fetch === 'undefined') return;
+      fetch(LIKE_API+'/hit/'+LIKE_NS+'/'+encodeURIComponent(id))
+        .then(function(r){ return r.json(); })
+        .then(function(j){ if(j && j.value!=null){ likeCounts[id]=j.value; paintCount(id); } })
+        .catch(function(){});
+    });
 
     function setInstant(i){
       focus = i;
@@ -1374,7 +1459,10 @@
       );
       function done(){
         if(d.dir==='fwd'){
-          if(commit){ pos = d.target; }
+          if(commit){
+            pos = d.target;
+            if(!d.mobile) leftContent.innerHTML = leftHTML(pos);
+          }
           else { contentEl.innerHTML = rightHTML(pos); }
         } else {
           if(commit){ pos = d.target; contentEl.innerHTML = rightHTML(pos); }
@@ -1393,6 +1481,27 @@
     }
     window.addEventListener('pointerup', endDrag);
     window.addEventListener('pointercancel', endDrag);
+
+    /* ---------- COMPARATEUR D'ÉCRITURES (essai) ---------- */
+    var FONTS = [
+      ["'Caveat',cursive",                 'Caveat'],
+      ["'Patrick Hand',cursive",           'Patrick Hand'],
+      ["'Kalam',cursive",                  'Kalam'],
+      ["'Handlee',cursive",                'Handlee'],
+      ["'Shadows Into Light Two',cursive", 'Shadows Into Light Two'],
+      ["'Architects Daughter',cursive",    'Architects Daughter']
+    ];
+    var fsBtn = document.getElementById('fontSwitch');
+    var fi = 0;
+    try{ fi = parseInt(localStorage.getItem('mm-font')||'0',10)||0; }catch(e){}
+    if(fi<0 || fi>=FONTS.length) fi = 0;
+    function applyFont(){
+      document.documentElement.style.setProperty('--hand', FONTS[fi][0]);
+      fsBtn.textContent = '✍ ' + FONTS[fi][1];
+      try{ localStorage.setItem('mm-font', fi); }catch(e){}
+    }
+    fsBtn.addEventListener('click', function(){ fi = (fi+1)%FONTS.length; applyFont(); });
+    applyFont();
 
     var tx=0, ty=0;
     rightPage.addEventListener('touchstart', function(e){ tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY; }, {passive:true});
