@@ -236,7 +236,7 @@
 
   .bookmarks{
     position:absolute;top:-22px;right:22px;
-    display:flex;gap:8px;z-index:6;
+    display:flex;gap:8px;z-index:31; /* toujours devant la page qui tourne (z-index:30) */
     align-items:flex-start;
   }
   .book.closed .bookmarks{opacity:0;pointer-events:none;}
@@ -534,7 +534,7 @@
         </div>
       </div>
 
-      <button class="page-back" id="backBtn" aria-label="retour" hidden>↩<span class="pb-txt">retour</span></button>
+      <button class="page-back" id="backBtn" aria-label="retour" hidden>&#8617;&#xFE0E;<span class="pb-txt">retour</span></button>
 
       <div class="page page-right" id="rightPage">
         <div class="content" id="content">
@@ -944,10 +944,10 @@
           <div class="roman-sous">Roman autofictionnel &nbsp;·&nbsp; Éditions Assyelle &nbsp;·&nbsp; à paraître fin 2026</div>
           <p class="roman-desc">
             Lucie, étudiante en école d'ingénieur, essaie de faire comme tout le monde&nbsp;: sortir,
-            boire, aimer, s'intégrer. Mais au fond d'elle, un mal-être persiste. Elle se sent en
-            permanence en décalage, soupçonne un problème, veut comprendre. Au fil des soirées,
-            des relations bancales, des substances et des séances de psy, entre errance et lucidité,
-            elle construit peu à peu une vie qui lui ressemble.
+            boire, aimer, s'intégrer. Mais au fond d'elle, quelque chose ne va pas. Elle se sent en
+            décalage, soupçonne un problème. Au fil des soirées, des relations bancales, des
+            substances et des séances de psy, entre errance et lucidité, parviendra-t-elle à
+            comprendre d'où vient ce mal-être&nbsp;?
           </p>
         </div>
 
@@ -1213,7 +1213,7 @@
       });
       prevBtn.disabled = (pos<=0);
       nextBtn.disabled = (pos>=maxPos());
-      backBtn.hidden = false;
+      backBtn.hidden = (focus<=0); /* pas de retour sur le sommaire */
       writeHash();
       hydrateHearts();
     }
