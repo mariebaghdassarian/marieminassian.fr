@@ -1216,12 +1216,29 @@
       backBtn.hidden = (focus<=0); /* pas de retour sur le sommaire */
       writeHash();
       hydrateHearts();
+      stHit('site-pages'); /* stats privées : une page affichée = une page lue */
     }
 
     /* ---------- CŒURS (compteur public, un cœur par navigateur) ---------- */
     var LIKE_API = 'https://abacus.jasoncameron.dev';
     var LIKE_NS  = 'marieminassian-fr';
     var likeCounts = {};
+
+    /* ---------- STATS PRIVÉES (tableau de bord : stats.html, URL non référencée) ----------
+       Compteurs anonymes via la même API que les cœurs. Opt-out : localStorage mm-stats-off
+       (le bouton sur stats.html le pose, pour ne pas compter Marie elle-même). */
+    var statsOff = false;
+    try{ statsOff = !!localStorage.getItem('mm-stats-off'); }catch(e){}
+    function stHit(k){
+      if(statsOff || typeof fetch==='undefined') return;
+      try{ fetch(LIKE_API+'/hit/'+LIKE_NS+'/'+k).catch(function(){}); }catch(e){}
+    }
+    /* 1 visite par session de navigation */
+    try{
+      if(!sessionStorage.getItem('mm-vu')){ sessionStorage.setItem('mm-vu','1'); stHit('site-visites'); }
+    }catch(e){ stHit('site-visites'); }
+    /* temps passé : +1 minute tant que l'onglet est visible */
+    setInterval(function(){ if(!document.hidden) stHit('site-minutes'); }, 60000);
     function isLiked(id){ try{ return !!localStorage.getItem('mm-liked-'+id); }catch(e){ return false; } }
     function paintCount(id){
       [].forEach.call(document.querySelectorAll('.heart[data-like="'+id+'"] .hc'), function(s){

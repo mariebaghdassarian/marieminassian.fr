@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Statistiques — privé</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#432e36; --ink2:#5f4842; --rose:#af8d86; --rose-l:#edbfc6;
+    --paper:#fbf6f0; --paper-2:#f3e9e0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:2rem 1rem 4rem; background:var(--paper); color:var(--ink);
+    font-family:'DM Sans',sans-serif; font-size:15px;
+  }
+  .wrap{max-width:640px; margin:0 auto;}
+  h1{font-family:'Caveat',cursive; font-size:2.2rem; font-weight:600; margin:.2rem 0 .1rem;}
+  .sub{color:var(--ink2); font-size:.85rem; margin-bottom:1.6rem;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:1.8rem;}
+  .card{
+    background:#fff; border:1px solid var(--paper-2); border-radius:10px;
+    padding:.9rem 1rem; box-shadow:0 1px 4px rgba(67,46,54,.06);
+  }
+  .card .num{font-family:'Caveat',cursive; font-size:2rem; font-weight:600; color:var(--rose); line-height:1;}
+  .card .lbl{font-size:.78rem; color:var(--ink2); margin-top:.35rem;}
+  h2{font-family:'Caveat',cursive; font-size:1.5rem; font-weight:600; margin:1.6rem 0 .6rem;}
+  table{width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--paper-2); border-radius:10px; overflow:hidden;}
+  td{padding:.55rem .9rem; border-top:1px solid var(--paper-2); font-size:.88rem;}
+  tr:first-child td{border-top:0;}
+  td.n{text-align:right; color:var(--rose); font-weight:500; white-space:nowrap;}
+  .note{font-size:.78rem; color:var(--ink2); margin-top:1.6rem; line-height:1.5;}
+  button#optout{
+    margin-top:1rem; background:0; border:1px solid var(--rose-l); border-radius:18px;
+    padding:.35rem 1rem; cursor:pointer; font-family:'Caveat',cursive; font-size:1rem; color:var(--ink2);
+  }
+  button#optout:hover{border-color:var(--rose); color:var(--ink);}
+  .loading{color:var(--ink2); font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Statistiques du livre</h1>
+  <div class="sub">Page privée — non référencée, ne pas partager l'adresse.</div>
+
+  <div class="cards">
+    <div class="card"><div class="num" id="visites">…</div><div class="lbl">visites</div></div>
+    <div class="card"><div class="num" id="pages">…</div><div class="lbl">pages lues</div></div>
+    <div class="card"><div class="num" id="minutes">…</div><div class="lbl">minutes passées</div></div>
+    <div class="card"><div class="num" id="tmoy">…</div><div class="lbl">temps moyen / visite</div></div>
+    <div class="card"><div class="num" id="pmoy">…</div><div class="lbl">pages / visite</div></div>
+    <div class="card"><div class="num" id="likes">…</div><div class="lbl">cœurs au total</div></div>
+  </div>
+
+  <h2>Cœurs par texte</h2>
+  <table id="tbl"><tr><td class="loading">chargement…</td></tr></table>
+
+  <button id="optout"></button>
+
+  <div class="note">
+    Une « visite » = une session de navigation (pas un visiteur unique).
+    Les minutes sont comptées par onglet ouvert et visible ; le temps moyen est une estimation.
+    Les compteurs démarrent au jour de la mise en ligne du tracking.
+  </div>
+</div>
+
+<script>
+(function(){
+  var API='https://abacus.jasoncameron.dev', NS='marieminassian-fr';
+
+  function get(key){
+    return fetch(API+'/get/'+NS+'/'+encodeURIComponent(key))
+      .then(function(r){ return r.ok ? r.json() : {value:0}; })
+      .then(function(j){ return j.value||0; })
+      .catch(function(){ return 0; });
+  }
+  function put(id,v){ document.getElementById(id).textContent = v; }
+
+  /* Compteurs globaux */
+  Promise.all([get('site-visites'), get('site-pages'), get('site-minutes')]).then(function(r){
+    var v=r[0], p=r[1], m=r[2];
+    put('visites', v); put('pages', p); put('minutes', m);
+    put('tmoy', v ? (Math.round(m/v*10)/10)+' min' : '–');
+    put('pmoy', v ? Math.round(p/v*10)/10 : '–');
+  });
+
+  /* Cœurs par texte : on lit les data-id + titres dans index.html */
+  fetch('index.html').then(function(r){ return r.text(); }).then(function(html){
+    var re = /data-id="([^"]+)"[\s\S]*?<h1>([^<]*)<\/h1>/g, m, items=[];
+    while((m=re.exec(html))) items.push({id:m[1], titre:m[2]});
+    return Promise.all(items.map(function(it){
+      return get(it.id).then(function(n){ it.n=n; return it; });
+    }));
+  }).then(function(items){
+    items.sort(function(a,b){ return b.n-a.n; });
+    var total=0, rows='';
+    items.forEach(function(it){
+      total+=it.n;
+      rows+='<tr><td>'+it.titre+'</td><td class="n">♥ '+it.n+'</td></tr>';
+    });
+    document.getElementById('tbl').innerHTML = rows || '<tr><td>aucun texte trouvé</td></tr>';
+    put('likes', total);
+  }).catch(function(){
+    document.getElementById('tbl').innerHTML='<tr><td>erreur de chargement</td></tr>';
+  });
+
+  /* Opt-out : ne pas compter cet appareil dans les stats */
+  var btn=document.getElementById('optout');
+  function paint(){
+    var off=false; try{ off=!!localStorage.getItem('mm-stats-off'); }catch(e){}
+    btn.textContent = off ? '✓ Cet appareil n\'est pas compté — recompter' : 'Ne pas compter cet appareil (moi)';
+  }
+  btn.addEventListener('click', function(){
+    try{
+      if(localStorage.getItem('mm-stats-off')) localStorage.removeItem('mm-stats-off');
+      else localStorage.setItem('mm-stats-off','1');
+    }catch(e){}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body>
+</html>
