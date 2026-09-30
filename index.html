@@ -149,7 +149,7 @@
   }
   .run-back:hover{color:var(--ink);}
   .leaf-body{
-    flex:1 1 auto;overflow-y:auto;overflow-x:hidden;
+    flex:1 1 auto;overflow:hidden; /* jamais de scroll : le texte est réparti sur plusieurs pages */
     scrollbar-width:thin;scrollbar-color:var(--rose-l) transparent;
     padding-right:4px;
   }
@@ -385,6 +385,11 @@
   .apropos .roman-titre{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;margin-bottom:.25rem;}
   .apropos .roman-sous{font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--rose);margin-bottom:.8rem;}
   .apropos .roman-desc{font-size:.9rem;color:var(--ink2);line-height:1.7;}
+  .apropos .roman-infos{font-family:'DM Sans',sans-serif;font-size:.7rem;color:var(--ink2);line-height:1.6;margin:.2rem 0 .9rem;}
+  .apropos .roman-achat{margin:0;}
+  .apropos .q4-label{margin-top:1.2rem;}
+  .apropos .q4{color:var(--ink2);}
+  .apropos .q4-fin{font-style:italic;color:var(--ink);}
   .apropos .liens-sociaux{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem;}
   .apropos .lien-social{font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--rose);text-decoration:none;border:1px solid var(--rose-l);padding:.4rem .85rem;transition:.15s;}
   .apropos .lien-social:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);}
@@ -480,6 +485,11 @@
 
   /* Glisser-tourner à la souris */
   body.turning{cursor:grabbing;user-select:none;-webkit-user-select:none;}
+
+  /* Pagination automatique (mesure hors écran + coupure des paragraphes entre deux pages) */
+  .page-measure{visibility:hidden;pointer-events:none;z-index:-1;}
+  .text-body p.coupe{text-align-last:justify;}
+  .apropos .roman-infos{font-family:var(--hand);font-size:.95rem;}
 
   /* Cœurs */
   .heart-bar{text-align:center;margin-top:1.4rem;}
@@ -935,21 +945,31 @@
         </p>
 
         <!-- ======================================================
-             ROMAN — mets à jour cette section quand le livre sort
+             ROMAN — Presque normale (paru en septembre 2026)
              ====================================================== -->
 
         <div class="roman-card">
           <div class="roman-label">Mon premier roman</div>
-          <div class="roman-titre">Presque Normale</div>
-          <div class="roman-sous">Roman autofictionnel &nbsp;·&nbsp; Éditions Assyelle &nbsp;·&nbsp; à paraître fin 2026</div>
-          <p class="roman-desc">
-            Lucie, étudiante en école d'ingénieur, essaie de faire comme tout le monde&nbsp;: sortir,
-            boire, aimer, s'intégrer. Mais au fond d'elle, quelque chose ne va pas. Elle se sent en
-            décalage, soupçonne un problème. Au fil des soirées, des relations bancales, des
-            substances et des séances de psy, entre errance et lucidité, parviendra-t-elle à
-            comprendre d'où vient ce mal-être&nbsp;?
+          <div class="roman-titre">Presque normale</div>
+          <div class="roman-sous">Roman autofictionnel &nbsp;·&nbsp; Éditions Assyelle &nbsp;·&nbsp; septembre 2026</div>
+          <p class="roman-infos">
+            Couverture illustrée par Judith Saurel<br>
+            17&nbsp;€ &nbsp;·&nbsp; ISBN 978-2-37855-237-4
+          </p>
+          <p class="roman-achat">
+            <a href="https://www.amazon.fr/dp/2378552378" class="lien-social" target="_blank" rel="noopener">Commander sur Amazon</a>
           </p>
         </div>
+
+        <div class="roman-label q4-label">Quatrième de couverture</div>
+        <p class="q4">Lucie voulait simplement être comme les autres.</p>
+        <p class="q4">Paris, au lendemain d'une soirée qui va marquer un point de rupture. Elle se réveille avec cette impression familière de ne jamais être tout à fait à sa place. Cette fois, pourtant, elle ressent quelque chose de différent. Alors les souvenirs remontent.</p>
+        <p class="q4">Grenoble. Son arrivée, après deux années de prépa qui l'ont laissée épuisée et solitaire, ressemble à une délivrance. Une nouvelle école, de nouveaux visages, des nuits qui n'en finissent plus. Elle veut sortir, aimer, séduire, rire trop fort, repousser ses limites. Enfin faire partie d'un groupe. Lucie se jette dans cette nouvelle vie avec une intensité dévorante.</p>
+        <p class="q4">Les soirées s'enchaînent, les rencontres aussi. Les corps se rapprochent, les amitiés vacillent, les sentiments s'embrasent. Dans l'euphorie, tout paraît plus simple. Plus beau. Plus vivant.</p>
+        <p class="q4">Mais lorsque le jour revient, une question demeure.<br>Pourquoi, au milieu des autres, se sent-elle toujours aussi seule&nbsp;?</p>
+        <p class="q4">Peu à peu, derrière celle qu'elle voudrait être apparaissent les failles qu'elle s'efforce de dissimuler. Lucie cherche des réponses dans l'amour, dans l'excès, dans le regard des autres, puis auprès de ceux qui pourraient enfin mettre un nom sur ce sentiment de décalage qui l'accompagne depuis toujours.</p>
+        <p class="q4">Mais à force de vouloir découvrir ce qui ne va pas chez elle, Lucie pourrait bien être confrontée à une question plus vertigineuse encore&nbsp;:</p>
+        <p class="q4 q4-fin">Et s'il n'existait aucune bonne façon d'être normale&nbsp;?</p>
 
         <div class="liens-sociaux">
           <a href="https://www.instagram.com/marie.minassian" class="lien-social" target="_blank" rel="noopener">Instagram</a>
@@ -1008,15 +1028,34 @@
       }
       document.documentElement.style.setProperty('--pw', pw + 'px');
       document.documentElement.style.setProperty('--ph', ph + 'px');
+      var changed = (pw!==lastPW || ph!==lastPH);
+      lastPW = pw; lastPH = ph;
       var was = book.classList.contains('mobile');
       book.classList.toggle('mobile', mobile);
       if(was !== mobile && pages.length){
         pos = posOf(focus);
         renderSpread();
-        updateChrome();
+        updateChrome(true);
       }
+      if(changed) scheduleRebuild();
     }
+    var lastPW = 0, lastPH = 0;
     window.addEventListener('resize', sizeBook);
+
+    /* Re-pagination (taille de page ou police modifiée) en gardant la page lue */
+    var rbTimer = null, ready = false;
+    function scheduleRebuild(){ clearTimeout(rbTimer); rbTimer = setTimeout(rebuild, 160); }
+    function rebuild(){
+      if(!ready) return;
+      if(animating || drag){ scheduleRebuild(); return; }
+      var key = pageHash(focus), old = focus;
+      buildPages();
+      var i = key ? indexForHash(key) : 0;
+      if(i<0) i = Math.min(old, pages.length-1);
+      focus = i; pos = posOf(i);
+      renderSpread();
+      updateChrome(true);
+    }
 
     /* ---------- LECTURE DU CONTENU LOCAL ---------- */
     function readSource(){
@@ -1040,38 +1079,167 @@
       data = { elu:elu, opu:opu, cita:cita, apropos:apropos };
     }
 
-    /* ---------- CONSTRUCTION DES PAGES ---------- */
-    function buildPages(){
-      pages = []; sectionStart = {};
+    /* ---------- CONSTRUCTION DES PAGES ----------
+       Pas de scroll : chaque contenu est versé dans des pages de la taille réelle
+       du livre (mesure hors écran). Un texte trop long continue sur la page suivante,
+       un paragraphe peut être coupé entre deux pages, comme dans un vrai livre.
+       Recalculé quand la taille de la fenêtre ou la police change. */
+    var measEl = null;
+    var textStart = {};
+    function fits(p){
+      if(!measEl){
+        var pg = document.createElement('div');
+        pg.className = 'page page-right page-measure';
+        pg.setAttribute('aria-hidden','true');
+        pg.innerHTML = '<div class="content"></div>';
+        book.appendChild(pg);
+        measEl = pg.firstChild;
+      }
+      measEl.innerHTML = leafHTMLOf(p, 98);
+      var b = measEl.querySelector('.leaf-body');
+      return b.scrollHeight <= b.clientHeight + 1;
+    }
 
-      pages.push({ kind:'sommaire', section:'sommaire' });
+    function blocksOf(html){
+      var t = document.createElement('template');
+      t.innerHTML = html || '';
+      var out = [];
+      [].forEach.call(t.content.childNodes, function(n){
+        if(n.nodeType===1) out.push(n.outerHTML);
+        else if(n.nodeType===3 && n.textContent.trim()) out.push('<p>'+esc(n.textContent.trim())+'</p>');
+      });
+      return out;
+    }
+
+    var BLOCK_TAG = /^(P|DIV|UL|OL|LI|BLOCKQUOTE|H[1-6]|SECTION|ARTICLE|FIGURE)$/;
+    var VOID_TAG = /^<(br|img|wbr|hr|input)\b/i;
+    /* Coupe un bloc en [début qui tient, suite] ; null si impossible proprement */
+    function splitBlock(html, ok){
+      var t = document.createElement('template');
+      t.innerHTML = html.trim();
+      var el = t.content.firstElementChild;
+      if(!el) return null;
+      function wrap(inner, cls){ var c = el.cloneNode(false); if(cls) c.classList.add(cls); c.innerHTML = inner; return c.outerHTML; }
+      var isContainer = [].some.call(el.children, function(k){ return BLOCK_TAG.test(k.tagName); });
+      if(isContainer){
+        var nodes = [].filter.call(el.childNodes, function(n){ return n.nodeType===1 || (n.nodeType===3 && n.textContent.trim()); });
+        var h = function(n){ return n.nodeType===1 ? n.outerHTML : esc(n.textContent); };
+        var k = 0;
+        while(k<nodes.length && ok(wrap(nodes.slice(0,k+1).map(h).join('')))) k++;
+        if(k>=nodes.length) return null;
+        var headIn = nodes.slice(0,k).map(h).join('');
+        var rest = nodes.slice(k+1).map(h).join('');
+        if(nodes[k].nodeType===1){
+          var sub = splitBlock(nodes[k].outerHTML, function(x){ return ok(wrap(headIn + x)); });
+          if(sub) return [wrap(headIn + sub[0]), wrap(sub[1] + rest, 'suite')];
+        }
+        if(k===0) return null;
+        return [wrap(headIn), wrap(nodes.slice(k).map(h).join(''), 'suite')];
+      }
+      var toks = el.innerHTML.match(/<[^>]+>|[^<\s]+|\s+/g) || [];
+      var bps = [];
+      toks.forEach(function(tk,i){ if(/^\s+$/.test(tk)) bps.push(i); });
+      if(bps.length < 4) return null;
+      function cut(at){
+        var stack = [];
+        for(var i=0;i<at;i++){
+          var tk = toks[i];
+          if(tk.charAt(0)!=='<' || tk.charAt(1)==='!') continue;
+          if(tk.charAt(1)==='/') stack.pop();
+          else if(!VOID_TAG.test(tk) && !/\/>$/.test(tk)) stack.push(tk);
+        }
+        var close = stack.slice().reverse().map(function(o){ return '</'+o.match(/^<([a-z0-9]+)/i)[1]+'>'; }).join('');
+        return [toks.slice(0,at).join('') + close, stack.join('') + toks.slice(at+1).join('')];
+      }
+      var lo = 0, hi = bps.length-1, best = -1;
+      while(lo<=hi){
+        var mid = (lo+hi)>>1;
+        if(ok(wrap(cut(bps[mid])[0]))){ best = mid; lo = mid+1; } else hi = mid-1;
+      }
+      if(best < 2) return null; /* au moins 3 mots en bas de page */
+      var pr = cut(bps[best]);
+      return [wrap(pr[0], 'coupe'), wrap(pr[1], 'suite')];
+    }
+
+    /* Verse des blocs dans autant de pages que nécessaire */
+    function flow(base, blocks, cap, hashOf, noSplit){
+      function mk(arr, first, last){
+        var p = {}; for(var k in base) p[k] = base[k];
+        p.html = arr.join(''); p.first = first; p.last = last;
+        return p;
+      }
+      var out = [], cur = [], q = blocks.slice();
+      while(q.length){
+        var b = q.shift();
+        if(cap && cur.length >= cap){ out.push(cur); cur = []; }
+        var first = out.length===0;
+        var trial = cur.concat([b]);
+        if(fits(mk(trial, first, false))){ cur = trial; continue; }
+        var parts = noSplit ? null : splitBlock(b, function(x){ return fits(mk(cur.concat([x]), first, false)); });
+        if(parts){ cur.push(parts[0]); out.push(cur); cur = []; q.unshift(parts[1]); continue; }
+        if(cur.length){ out.push(cur); cur = []; q.unshift(b); continue; }
+        out.push([b]); /* bloc insécable plus grand qu'une page : on le laisse seul */
+      }
+      if(cur.length || !out.length) out.push(cur);
+      /* la dernière page porte le pied (cœur) : on vérifie qu'il tient */
+      for(var guard=0; guard<3; guard++){
+        var L = out[out.length-1], f1 = out.length===1;
+        if(fits(mk(L, f1, true))) break;
+        if(L.length > 1){ out.push([L.pop()]); continue; }
+        var pr = (L.length && !noSplit) ? splitBlock(L[0], function(x){ return fits(mk([x], f1, true)); }) : null;
+        if(pr){ out[out.length-1] = [pr[0]]; out.push([pr[1]]); }
+        else break;
+      }
+      return out.map(function(arr, i){
+        var p = mk(arr, i===0, i===out.length-1);
+        p.hash = hashOf(i);
+        return p;
+      });
+    }
+
+    function pushAll(arr){ arr.forEach(function(p){ pages.push(p); }); }
+
+    function buildPages(){
+      pages = []; sectionStart = {}; textStart = {};
+
+      pages.push({ kind:'sommaire', section:'sommaire', hash:'' });
+
+      function listPages(section, items){
+        var blocks = items.map(function(it){
+          return '<li class="post-item" data-text="'+esc(it.id)+'">'+
+                   '<div class="pi-title">'+esc(it.title)+'</div>'+
+                   (it.extrait? '<div class="pi-extrait">'+esc(it.extrait)+'</div>':'')+
+                   '<span class="pi-go">lire →</span>'+
+                 '</li>';
+        });
+        return flow({ kind:'list', section:section, empty:!items.length }, blocks, 0,
+                    function(i){ return i===0 ? section : section+'-p'+(i+1); }, true);
+      }
+      function textPages(it, section, backIdx, backLabel){
+        textStart[it.id] = pages.length;
+        pushAll(flow({ kind:'text', section:section, id:it.id, title:it.title, meta:it.meta,
+                       backIndex:backIdx, backLabel:backLabel }, blocksOf(it.html), 0,
+                     function(i){ return i===0 ? it.id : it.id+'-p'+(i+1); }));
+      }
 
       sectionStart.elucubrations = pages.length;
       var eluListIdx = pages.length;
-      pages.push({ kind:'list', section:'elucubrations', items:data.elu });
-      data.elu.forEach(function(it){
-        it.pageIndex = pages.length;
-        pages.push({ kind:'text', section:'elucubrations', id:it.id, title:it.title, meta:it.meta, html:it.html, backIndex:eluListIdx, backLabel:'Élucubrations' });
-      });
+      pushAll(listPages('elucubrations', data.elu));
+      data.elu.forEach(function(it){ textPages(it, 'elucubrations', eluListIdx, 'Élucubrations'); });
 
       sectionStart.citations = pages.length;
-      var n = 0;
-      for(var i=0;i<data.cita.length;i+=CITA_PER_PAGE){
-        pages.push({ kind:'cita', section:'citations', items:data.cita.slice(i,i+CITA_PER_PAGE), citaHash: n===0 ? 'citations' : 'citations-'+(n+1) });
-        n++;
-      }
-      if(data.cita.length===0){ pages.push({ kind:'cita', section:'citations', items:[], citaHash:'citations' }); }
+      var cBlocks = data.cita.map(function(c){ return '<blockquote class="cita">'+c+'</blockquote>'; });
+      pushAll(flow({ kind:'cita', section:'citations', empty:!cBlocks.length }, cBlocks, CITA_PER_PAGE,
+                   function(i){ return i===0 ? 'citations' : 'citations-'+(i+1); }, true));
 
       sectionStart.opuscules = pages.length;
       var opuListIdx = pages.length;
-      pages.push({ kind:'list', section:'opuscules', items:data.opu });
-      data.opu.forEach(function(it){
-        it.pageIndex = pages.length;
-        pages.push({ kind:'text', section:'opuscules', id:it.id, title:it.title, meta:it.meta, html:it.html, backIndex:opuListIdx, backLabel:'Opuscules' });
-      });
+      pushAll(listPages('opuscules', data.opu));
+      data.opu.forEach(function(it){ textPages(it, 'opuscules', opuListIdx, 'Opuscules'); });
 
       sectionStart.apropos = pages.length;
-      pages.push({ kind:'apropos', section:'apropos' });
+      pushAll(flow({ kind:'apropos', section:'apropos' }, blocksOf(data.apropos), 0,
+                   function(i){ return i===0 ? 'apropos' : 'apropos-p'+(i+1); }));
     }
 
     /* ---------- RENDU ---------- */
@@ -1084,7 +1252,7 @@
         case 'list':     return listBody(p);
         case 'cita':     return citaBody(p);
         case 'text':     return textBody(p);
-        case 'apropos':  return aproposBody();
+        case 'apropos':  return aproposBody(p);
         case 'error':    return p.html;
       }
       return '';
@@ -1108,39 +1276,34 @@
 
     function listBody(p){
       var s = secOf(p.section);
-      if(!p.items || !p.items.length) return '<p class="loading">à venir…</p>';
-      var items = p.items.map(function(it){
-        return '<li class="post-item" data-goto="'+it.pageIndex+'">'+
-                 '<div class="pi-title">'+esc(it.title)+'</div>'+
-                 (it.extrait? '<div class="pi-extrait">'+esc(it.extrait)+'</div>':'')+
-                 '<span class="pi-go">lire →</span>'+
-               '</li>';
-      }).join('');
-      return '<p class="sec-label">'+(s?s.sub:'')+'</p><ul class="post-list">'+items+'</ul>';
+      if(p.empty) return '<p class="loading">à venir…</p>';
+      return (p.first ? '<p class="sec-label">'+(s?s.sub:'')+'</p>' : '')+
+             '<ul class="post-list">'+p.html+'</ul>';
     }
 
     function citaBody(p){
-      if(!p.items.length) return '<p class="loading">à venir…</p>';
-      return p.items.map(function(c){ return '<blockquote class="cita">'+c+'</blockquote>'; }).join('');
+      if(p.empty) return '<p class="loading">à venir…</p>';
+      return p.html;
     }
 
     function textBody(p){
       /* on retire le badge catégorie (la rubrique est déjà dans le titre courant) */
       var meta = (p.meta||'').replace(/<span class="post-categorie">[\s\S]*?<\/span>/g,'').trim();
-      return '<div class="text-head">'+
-               (meta? '<div class="text-meta">'+meta+'</div>':'')+
-               '<h1 class="text-title">'+esc(p.title)+'</h1>'+
-             '</div>'+
+      return (p.first ?
+               '<div class="text-head">'+
+                 (meta? '<div class="text-meta">'+meta+'</div>':'')+
+                 '<h1 class="text-title">'+esc(p.title)+'</h1>'+
+               '</div>' : '')+
              '<div class="text-body">'+p.html+'</div>'+
-             '<div class="heart-bar"><button class="heart" data-like="'+p.id+'" aria-label="j\'aime ce texte">♥ <span class="hc"></span></button></div>';
+             (p.last ? '<div class="heart-bar"><button class="heart" data-like="'+p.id+'" aria-label="j\'aime ce texte">♥ <span class="hc"></span></button></div>' : '');
     }
 
-    function aproposBody(){
-      return '<div class="apropos">'+(data.apropos || '<p>à venir…</p>')+'</div>';
+    function aproposBody(p){
+      return '<div class="apropos">'+(p.html || '<p>à venir…</p>')+'</div>';
     }
 
-    function leafHTML(i){
-      var p = pages[i];
+    function leafHTML(i){ return leafHTMLOf(pages[i], i); }
+    function leafHTMLOf(p, i){
       var s = secOf(p.section);
       var rh;
       if(p.kind==='text' && p.backIndex!=null){
@@ -1179,12 +1342,7 @@
     /* ---------- ANCRES / URL ---------- */
     function pageHash(i){
       var p = pages[i];
-      if(!p) return '';
-      if(p.kind==='text')    return p.id;
-      if(p.kind==='cita')    return p.citaHash;
-      if(p.kind==='list')    return p.section;
-      if(p.kind==='apropos') return 'apropos';
-      return '';
+      return p ? (p.hash || '') : '';
     }
     function indexForHash(h){
       if(!h) return -1;
@@ -1192,6 +1350,8 @@
       if(!h) return -1;
       for(var i=0;i<pages.length;i++){ if(pageHash(i)===h) return i; }
       if(sectionStart[h]!=null) return sectionStart[h];
+      var base = h.replace(/-p\d+$/,'');          /* page de suite disparue → début du texte */
+      if(base!==h) return indexForHash(base);
       return -1;
     }
     var suppressHash = false;
@@ -1206,7 +1366,7 @@
     }
 
     /* ---------- NAVIGATION ---------- */
-    function updateChrome(){
+    function updateChrome(silent){
       var sec = pages[focus] ? pages[focus].section : null;
       [].forEach.call(bmWrap.children, function(b){
         b.classList.toggle('active', b.getAttribute('data-section')===sec);
@@ -1216,7 +1376,7 @@
       backBtn.hidden = (focus<=0); /* pas de retour sur le sommaire */
       writeHash();
       hydrateHearts();
-      stHit('site-pages'); /* stats privées : une page affichée = une page lue */
+      if(!silent) stHit('site-pages'); /* stats privées : une page affichée = une page lue */
     }
 
     /* ---------- CŒURS (compteur public, un cœur par navigateur) ---------- */
@@ -1386,8 +1546,10 @@
 
     function clickNav(e){
       if(suppressClick) return;
-      var t = e.target.closest('[data-goto]');
-      if(t){ go(parseInt(t.getAttribute('data-goto'),10)); }
+      var t = e.target.closest('[data-goto],[data-text]');
+      if(!t) return;
+      if(t.hasAttribute('data-text')){ var ti = textStart[t.getAttribute('data-text')]; if(ti!=null) go(ti); }
+      else go(parseInt(t.getAttribute('data-goto'),10));
     }
     contentEl.addEventListener('click', clickNav);
     leftContent.addEventListener('click', clickNav);
@@ -1420,7 +1582,7 @@
     book.addEventListener('pointerdown', function(e){
       if(!opened || animating || drag) return;
       if(e.pointerType!=='mouse' || e.button!==0) return;
-      if(e.target.closest('button,a,[data-goto]')) return;
+      if(e.target.closest('button,a,[data-goto],[data-text]')) return;
       drag = { x:e.clientX, y:e.clientY, active:false };
     });
 
@@ -1517,7 +1679,11 @@
       fsBtn.textContent = '✍ ' + FONTS[fi][1];
       try{ localStorage.setItem('mm-font', fi); }catch(e){}
     }
-    fsBtn.addEventListener('click', function(){ fi = (fi+1)%FONTS.length; applyFont(); });
+    fsBtn.addEventListener('click', function(){ fi = (fi+1)%FONTS.length; applyFont(); scheduleRebuild(); });
+    if(document.fonts){
+      if(document.fonts.ready) document.fonts.ready.then(scheduleRebuild);
+      if(document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', scheduleRebuild);
+    }
     applyFont();
 
     var tx=0, ty=0;
@@ -1547,6 +1713,7 @@
       buildBookmarks(); fail();
     } else {
       buildPages();
+      ready = true;
       buildBookmarks();
       var target = indexForHash(location.hash);
       if(target > 0){ openBook(); setInstant(target); }
